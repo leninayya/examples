@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: exampleservice
+  profiles: docker
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://postgres:5432/exampledb?stringtype=unspecified
+    username: docker
+    password: docker
+    driver-class-name: org.postgresql.Driver
+flyway:
+  enabled: true
+---
+
+spring:
+  profiles: test
+flyway:
+  enabled: false

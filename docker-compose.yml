@@ -1,0 +1,21 @@
+version: '2'
+services:
+  exampleservice:
+    container_name: example_service
+    build: .
+    depends_on:
+     - postgres
+    ports:
+     - "8080:8080"
+
+  postgres:
+    image: postgres:latest
+    container_name: example_postgres
+    ports:
+     - "5432:5432" #change to 5432:5432
+    environment:
+     - POSTGRES_USER=docker
+     - POSTGRES_PASSWORD=docker
+     - POSTGRES_DB=exampledb
+#    volumes:
+#     - pgvolume:/var/lib/postgresql/data
